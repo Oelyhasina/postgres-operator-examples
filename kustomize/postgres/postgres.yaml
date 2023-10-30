@@ -15,6 +15,7 @@ spec:
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
+        volumeName: pvc-5b8e8522-b390-4fa2-b305-a368ff07e93c
         resources:
           requests:
             storage: 1Gi
@@ -27,6 +28,7 @@ spec:
           volumeClaimSpec:
             accessModes:
             - "ReadWriteOnce"
+            volumeName: pvc-da3e027f-359c-49fe-a442-ca842551b83a
             resources:
               requests:
                 storage: 1Gi
