@@ -1,12 +1,17 @@
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
-  name: hippo
+  name: serveridea
 spec:
   image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-15.4-1
   postgresVersion: 15
   instances:
-    - name: instance1
+    - name: postgresdb
+      replicas: 2
+      resources:
+        limits:
+          cpu: "0.5"
+          memory: 1Gi
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
@@ -25,3 +30,11 @@ spec:
             resources:
               requests:
                 storage: 1Gi
+  service:
+    metadata:
+      annotations:
+        annotation1: "mdnodeport1"
+      labels:
+        label1: "32000"
+    type: NodePort
+    nodePort: 32000
