@@ -15,10 +15,9 @@ spec:
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
-        volumeName: volume-postgres
         resources:
           requests:
-            storage: 1Gi
+            storage: 200Gi
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.47-1
@@ -28,10 +27,9 @@ spec:
           volumeClaimSpec:
             accessModes:
             - "ReadWriteOnce"
-            volumeName: backup-postgres
             resources:
               requests:
-                storage: 1Gi
+                storage: 200Gi
   service:
     metadata:
       annotations:
