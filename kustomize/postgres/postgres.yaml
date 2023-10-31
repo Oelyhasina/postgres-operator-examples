@@ -18,6 +18,9 @@ spec:
         resources:
           requests:
             storage: 200Gi
+  users:
+    - name: mysuperuser
+      role: pgsuper  
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.47-1
