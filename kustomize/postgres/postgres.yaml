@@ -20,7 +20,8 @@ spec:
             storage: 200Gi
   users:
     - name: mysuperuser
-      role: pgsuper  
+      systemAccess:
+        - SUPERUSER 
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.47-1
