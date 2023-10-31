@@ -19,9 +19,8 @@ spec:
           requests:
             storage: 200Gi
   users:
-    - name: mysuperuser
-      systemAccess:
-        - SUPERUSER 
+    - name: postgres
+      options: "SUPERUSER"
   backups:
     pgbackrest:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.47-1
