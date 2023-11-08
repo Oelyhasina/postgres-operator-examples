@@ -7,17 +7,18 @@ spec:
   postgresVersion: 15
   instances:
     - name: postgresdb
-      replicas: 2
+      replicas: 3
       resources:
         limits:
-          cpu: "0.5"
-          memory: 1Gi
+          cpu: "1"
+          memory: 4Gi
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
+        storageClassName: "nascluster"
         resources:
           requests:
-            storage: 200Gi
+            storage: 1000Gi
   users:
     - name: postgres
       options: "SUPERUSER"
@@ -27,6 +28,8 @@ spec:
       global:
         repo1-retention-full: "14"
         repo1-retention-full-type: time
+        repo1-retention-diff: "30"  # Ajouté pour la rétention des sauvegardes différentielles
+        repo1-retention-incr: "30"
       repos:
       - name: repo1
         volume:
@@ -35,9 +38,11 @@ spec:
             - "ReadWriteOnce"
             resources:
               requests:
-                storage: 200Gi
-      # schedules:
-      #   full: "50 15 * * *"
+                storage: 1000Gi
+      schedules:
+        full: "0 12 * * 0"  # Chaque dimanche à midi
+        diff: "0 12 * * 1-6"  # Tous les jours à midi, sauf le dimanche
+
   service:
     metadata:
       annotations:
