@@ -39,9 +39,9 @@ spec:
             resources:
               requests:
                 storage: 1000Gi
-      schedules:
-        full: "0 12 * * 0"  # Chaque dimanche à midi
-        diff: "0 12 * * 1-6"  # Tous les jours à midi, sauf le dimanche
+      # schedules: # non prise en charge
+      #   full: "0 12 * * 0"  # Chaque dimanche à midi
+      #   diff: "0 12 * * 1-6"  # Tous les jours à midi, sauf le dimanche
 
   service:
     metadata:
